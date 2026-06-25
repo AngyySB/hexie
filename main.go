@@ -1,17 +1,31 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
+	"math/big"
 	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	if len(os.Args) < 2 {
+	a := len(os.Args)
+	var col string
+	if a == 1 {
+
+		chars := "0123456789abcdef"
+
+		for range 6 {
+			n, _ := rand.Int(rand.Reader, big.NewInt(int64(len(chars))))
+			col += string(chars[n.Int64()])
+		}
+		fmt.Printf("GENERATED RANDOM COLOR: #%s\n", col)
+	} else if a == 2 {
+		col += strings.TrimPrefix(os.Args[1], "#")
+	} else {
 		os.Exit(1)
 	}
-	col := strings.TrimPrefix(os.Args[1], "#")
 
 	if len(col) != 6 {
 		os.Exit(2)
