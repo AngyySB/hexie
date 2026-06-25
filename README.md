@@ -5,17 +5,24 @@ A tiny CLI tool that previews a hex color directly in your terminal.
 ## Usage
 
 ```
-hexie <hex-color>
+hexie [hex-color]
 ```
 
-The `#` prefix is optional:
+Preview a specific hex color (the `#` prefix is optional):
 
 ```sh
 hexie "#ff6347"
 hexie ff6347
 ```
 
-This prints a small colored block using your terminal's true-color support.
+Run without arguments to generate and preview a random color:
+
+```sh
+hexie
+# GENERATED RANDOM COLOR: #a3f72c
+```
+
+Both modes print a small colored block using your terminal's true-color support.
 
 ## Install
 
